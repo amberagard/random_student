@@ -16,6 +16,8 @@ Things you may want to cover:
 
 * Configuration
 
+copy config/database.yml.example to config/database.yml and make any changes necessary for your machine
+
 * Database creation
 
 * Database initialization
