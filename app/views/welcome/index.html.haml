@@ -1,3 +1,5 @@
 %h1 Welcome Aboard!
 
-= link_to "Add a Student", students_path
+= link_to "Add a Student", new_student_path
+
+%ul#students= render @students

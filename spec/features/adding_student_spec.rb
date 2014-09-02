@@ -1,10 +1,12 @@
 feature "Adding a student" do
   scenario "Happy Path" do
     visit '/'
-    fill_in "Name", with: "Sally"
     click_on "Add a Student"
-    page.should have_content("Sally has been added to the list.")
-    current_path.should == students_path
+    save_and_open_page
+    fill_in "Name", with: "Sally"
+    click_on "Add Student"
+    page.should have_content("Sally was added to the list.")
+    current_path.should == '/'
     within("ul#students") do
       page.should have_content("Sally")
     end
@@ -13,7 +15,8 @@ feature "Adding a student" do
   scenario "Empty Input" do
     visit '/'
     click_on "Add a Student"
-    page.should have_content("Student could not be added.")
-    page.should have_error("can't be blank", on: "Name")
+
+    click_on "Add Student"
+    page.should have_content("Student name cannot be blank.")
   end
 end
